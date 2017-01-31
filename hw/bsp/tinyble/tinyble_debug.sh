@@ -28,9 +28,19 @@
 #  - NO_GDB set if we should not start gdb to debug
 #
 
-. $CORE_PATH/hw/scripts/jlink.sh
+. $CORE_PATH/hw/scripts/openocd.sh
+
+CFG="-f interface/cmsis-dap.cfg -f target/nrf51.cfg"
+EXTRA_JTAG_CMD="$EXTRA_JTAG_CMD; nrf51.cpu configure -event gdb-detach {if {[nrf51.cpu curstate] eq \"halted\"} resume;shutdown}"
 
 FILE_NAME=$BIN_BASENAME.elf
-JLINK_DEV="nRF51422_xxAC"
 
-jlink_debug
+if [ $# -gt 2 ]; then
+    SPLIT_ELF_NAME=$3.elf
+    # TODO -- this magic number 0x42000 is the location of the second image
+    # slot. we should either get this from a flash map file or somehow learn
+    # this from the image itself
+    EXTRA_GDB_CMDS="add-symbol-file $SPLIT_ELF_NAME 0x23800 -readnow"
+fi
+
+openocd_debug
