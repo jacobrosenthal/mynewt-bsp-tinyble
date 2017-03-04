@@ -28,6 +28,8 @@ bsp.linkerscript.BOOT_LOADER.OVERWRITE:
 bsp.part2linkerscript: "hw/bsp/tinyble/split-tinyble.ld"
 bsp.downloadscript: "hw/bsp/tinyble/tinyble_download.sh"
 bsp.debugscript: "hw/bsp/tinyble/tinyble_debug.sh"
+bsp.downloadscript.WINDOWS.OVERRIDE: "hw/bsp/tinyble/tinyble_download.cmd"
+bsp.debugscript.WINDOWS.OVERRIDE: "hw/bsp/tinyble/tinyble_debug.cmd"
 
 bsp.flash_map:
     areas:
