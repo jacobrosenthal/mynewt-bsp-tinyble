@@ -19,8 +19,6 @@
 
 repo.name: mynewt-bsp-tinyble
 repo.versions:
-    "0.0.0": "develop"
-    "0.0.1": "master"
+    "0.0.0": "master"
 
     "0-latest": "0.0.0"
-    "0-dev": "0.0.0"
