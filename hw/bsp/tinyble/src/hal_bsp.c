@@ -67,8 +67,8 @@ static const struct nrf51_hal_spi_cfg os_bsp_spi1s_cfg = {
 
 #if MYNEWT_VAL(I2C_0)
 static const struct nrf51_hal_i2c_cfg hal_i2c_cfg = {
-    .scl_pin = 7,
-    .sda_pin = 30,
+    .scl_pin = 13,
+    .sda_pin = 12,
     .i2c_frequency = 100    /* 100 kHz */
 };
 #endif
